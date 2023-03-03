@@ -59,7 +59,7 @@ def autostart():
             for t in today_todo:
                 print("  Do:",t[0])
         else:
-            print("Today does not task")
+            print("Today'sdoes not task")
     else:
         if args[1] == "-add":
             task_add(args[2],args[3])
