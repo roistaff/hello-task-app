@@ -18,7 +18,7 @@ def task_add(to_do,time):
         writer = csv.writer(f)
         writer.writerow([to_do,time])
 def task_remove(delete_row):
-    if delete_row > len(task_read()):
+    if delete_row > len(task_read()) or delete_row == 0:
         print("Error.No task.")
     else:
         delete_row = delete_row - 1
@@ -36,7 +36,12 @@ def task_remove(delete_row):
 def task_cal():
     tasks = task_read()
     dt_now = datetime.datetime.now()
-
+    now = datetime.datetime(dt_now.year,dt_now.month,dt_now.day)
+    foundlist = []
+    for t in tasks:
+        if str(t[1]) == str(now):
+            foundlist.append(t)
+    return foundlist
 def default_start():
     if os.path.exists("tasks"):
         pass
@@ -48,6 +53,13 @@ def autostart():
     default_start()
     if len(args) == 1:
         print("Hello")
+        today_todo = task_cal()
+        if len(today_todo) > 0:
+            print("Today Task")
+            for t in today_todo:
+                print("  Do:",t[0])
+        else:
+            print("Today does not task")
     else:
         if args[1] == "-add":
             task_add(args[2],args[3])
@@ -57,3 +69,5 @@ def autostart():
                 print("Do:",t[0],"When:",t[1])
         elif args[1] == "-remove":
             task_remove(int(args[2]))
+        else:
+            print("No found command")
