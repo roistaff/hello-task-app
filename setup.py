@@ -9,7 +9,7 @@ setup(
     author_email='roistaff1983@gmail.com',
     entry_points={
         'console_scripts': [
-            'hello-task = task_app.task_app.py:autostart',
+            'hello-task = task_app.task_app:autostart',
         ],
     },
 )
