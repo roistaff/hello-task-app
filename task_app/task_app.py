@@ -55,11 +55,11 @@ def autostart():
         print("Hello")
         today_todo = task_cal()
         if len(today_todo) > 0:
-            print("Today Task")
+            print("Today's Task")
             for t in today_todo:
                 print("  Do:",t[0])
         else:
-            print("Today'sdoes not task")
+            print("Not found Today's task")
     else:
         if args[1] == "-add":
             task_add(args[2],args[3])
